@@ -10,10 +10,8 @@ public class DynamicArray <T>{
 
 
   public DynamicArray(){
+    dynamicArrayCapacity = 1;
     dynamicArray = (T[]) new Object[dynamicArrayCapacity];
-    dynamicArraySize = 0; 
-    dynamicArrayCapacity = 0;
-    currentIndex = 0;
   }
 
   public DynamicArray(int initialCapacity){
@@ -25,17 +23,6 @@ public class DynamicArray <T>{
     dynamicArrayCapacity = initialCapacity;
     currentIndex = 0;
   }
-
-  public DynamicArray(int size){
-    if (size < 0){
-      throw new IllegalArgumentException("Size cannot be negative. Please provide a non-negative integer.");
-    }
-    dynamicArraySize = size; 
-    dynamicArrayCapacity = size * 2;
-    dynamicArray = (T[]) new Object[dynamicArrayCapacity];
-    currentIndex = 0;
-  }
-
 
 
   private void resizeArray(){
@@ -50,14 +37,14 @@ public class DynamicArray <T>{
 
 
   public void append(T value){
-    dynamicArray[currentIndex++] = value; 
     if (dynamicArraySize + 1 >= dynamicArrayCapacity){
       resizeArray();
     }
+    dynamicArray[currentIndex++] = value; 
   }
 
   public int getSize(){
-    return (int) this.dynamicArraySize;
+    return this.dynamicArraySize;
   }
 
   public T getValue(int index){
