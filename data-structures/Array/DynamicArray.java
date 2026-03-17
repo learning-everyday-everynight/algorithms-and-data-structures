@@ -55,6 +55,23 @@ public class DynamicArray <T>{
     return removedValue;
   }
 
+  public void insert(int index, T value){
+    if (index < 0 || index >= this.dynamicArraySize){
+      throw new IndexOutOfBoundsException("The index is out of bounds. Please provide an index between 0 and " + (this.dynamicArraySize - 1)); 
+    }
+
+    if (dynamicArraySize >= dynamicArrayCapacity){
+      resizeArray();
+    }
+
+    for (int i = dynamicArraySize; i > index; i--){
+      dynamicArray[i] = dynamicArray[i-1]; 
+    }
+    dynamicArray[index] = value; 
+    dynamicArraySize++;
+  }
+
+
   public int getSize(){
     return this.dynamicArraySize;
   }
