@@ -91,6 +91,16 @@ public class DynamicArray <T>{
 
   }
 
+  public boolean isEmpty(){
+    return this.dynamicArraySize == 0;
+  }
+
+  public void clear(){
+    for (int i = 0; i < dynamicArraySize; i++){
+      dynamicArray[i] = null;
+    }
+    dynamicArraySize = 0;
+  }
 
   public void printArray(){
     for (int i = 0; i < dynamicArraySize; i++){
