@@ -43,6 +43,18 @@ public class DynamicArray <T>{
     dynamicArray[currentIndex++] = value; 
   }
 
+  public T remove(int index){
+    if (index < 0 || index >= this.dynamicArraySize){
+      throw new IndexOutOfBoundsException("The index is out of bounds. Please provide an index between 0 and " + (this.dynamicArraySize - 1)); 
+    }
+    T removedValue = dynamicArray[index];
+    for (int i = index; i < dynamicArraySize - 1; i++){
+      dynamicArray[i] = dynamicArray[i + 1];
+    }
+    dynamicArray[--dynamicArraySize] = null;
+    return removedValue;
+  }
+
   public int getSize(){
     return this.dynamicArraySize;
   }
